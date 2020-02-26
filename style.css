@@ -1,0 +1,45 @@
+#fake, .highcharts-container, #kbd {
+	display: inline-block;
+}
+
+#fake {
+	position: relative;
+	/*cursor: url('./cursort.png'), auto;*/
+}
+
+#kbd {
+	width: 562px;
+}
+
+#kbd div {
+	margin-right: 1px;
+	margin-top: 1px;
+}
+
+.lk {
+	text-align: center;
+	display: inline-block;
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid black;
+	box-sizing: border-box;
+}
+
+.sp {
+	text-align: center;
+	display: inline-block;
+	width: 25px;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid white;
+	box-sizing: border-box;
+}
+
+.spac {
+	width: 250px;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid black;
+	box-sizing: border-box;
+}
