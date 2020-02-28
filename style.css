@@ -4,26 +4,29 @@
 
 #fake {
 	position: relative;
+	overflow: hidden;
 	/*cursor: url('./cursort.png'), auto;*/
 }
 
-#kbd {
-	width: 562px;
+.kbd {
+	width: 550px;
 }
 
-#kbd div {
-	margin-right: 1px;
-	margin-top: 1px;
+.kbd div {
+	position: relative;
 }
 
 .lk {
+    outline-offset: -2px;
+    outline: 1px solid black;		
 	text-align: center;
 	display: inline-block;
 	width: 50px;
 	height: 40px;
 	line-height: 40px;
-	border: 1px solid black;
 	box-sizing: border-box;
+	background-color: white;
+	z-index: -1;
 }
 
 .sp {
@@ -32,14 +35,15 @@
 	width: 25px;
 	height: 40px;
 	line-height: 40px;
-	border: 1px solid white;
+	margin: 0 !important;
 	box-sizing: border-box;
+	background-color: white;
+	z-index: 1;
 }
 
 .spac {
 	width: 250px;
 	height: 40px;
 	line-height: 40px;
-	border: 1px solid black;
 	box-sizing: border-box;
 }

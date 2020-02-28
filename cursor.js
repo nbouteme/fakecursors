@@ -12,11 +12,11 @@ let wrap = (x, m) => {
 }
 
 class Cursor {
-	constructor(parent, targets) {
+	constructor(parent, targets, colored) {
 		this.parent = parent;
 		this.element = document.createElement('img');
 		let c = this.element;
-		c.src = './cursorc.png';
+		c.src = colored ? './cursorc.png' : './cursort.png';
 		c.style.filter = `hue-rotate(${~~(Math.random() * 360)}deg) saturate(100)`;
 		fake.appendChild(c);
 
@@ -47,26 +47,41 @@ class Cursor {
 		c.style['left'] = `${pos.x}px`;
 		c.style['top'] = `${pos.y}px`;
 	}
+
+	reajust() {/*no op*/}
+	adjust() {/*no op*/}
 }
 
 class FakeCursor extends Cursor {
-	constructor(parent, targets) {
-		super(parent, targets);
-		const n = 6;
-		const div = 360 / n;
-		while (!this.pert)
-			this.pert = ~~(Math.random() * div) % n;
+	constructor(parent, targets, colored, devs = 6) {
+		super(parent, targets, colored);
+		this.n = devs;
+		this.div = 360 / this.n;
+		this.reajust();
+	}
+
+	reajust() {
+		this.pert = ~~(Math.random() * this.div) % this.n;
+	}
+
+	adjust() {
+		// cherche un multiple d'angle non
+		// nul pour ne pas perturber l'utilisateur
+		while(!this.pert)
+			this.reajust();
 	}
 
 	update(diff) {
+		let c = this.element;
 		let pos = this.position;
+
 		diff = rotate(diff, 60 * this.pert);
+
 		pos.x += diff[0];
 		pos.y += diff[1];
 		pos.x = wrap(pos.x, fake.clientWidth);
 		pos.y = wrap(pos.y, fake.clientHeight);
 
-		let c = this.element;
 		c.style['left'] = `${pos.x}px`;
 		c.style['top'] = `${pos.y}px`;
 	}
